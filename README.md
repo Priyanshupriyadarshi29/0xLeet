@@ -43,9 +43,9 @@ Install dependencies:
 
 bash
 npm install
-Create a .env file and add your Gemini API key:
+edit .env file and add your Gemini API key:
 GEMINI_API_KEY=your-api-key
-PORT=3000
+
 Start the server:
 
 📎 Project Structure
