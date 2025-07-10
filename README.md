@@ -26,7 +26,7 @@
 
 ### 1. Clone the project
 ```bash
-git clone https://github.com/Priyanshupriyadarshi29/0xLeet.git
+1. git clone https://github.com/Priyanshupriyadarshi29/0xLeet.git
 2. Load the extension
 Open Chrome and go to chrome://extensions
 
@@ -42,26 +42,13 @@ Navigate to the backend directory
 Install dependencies:
 
 bash
-Copy
-Edit
 npm install
 Create a .env file and add your Gemini API key:
-
-ini
-Copy
-Edit
 GEMINI_API_KEY=your-api-key
 PORT=3000
 Start the server:
 
-bash
-Copy
-Edit
-npm start
 📎 Project Structure
-bash
-Copy
-Edit
 0xLeet/
 ├── extension/        # Chrome extension files
 ├── server.js         # Express backend
