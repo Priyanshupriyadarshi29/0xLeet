@@ -58,7 +58,14 @@ Start the server:
 👨‍💻 About the Author
 Priyanshu Priyadarshi
 MERN Stack Developer | Data Analyst | NIT Rourkela '26
+
+
 I enjoy building tools that combine automation, web tech, and AI to solve real-world problems.
+
+
+
 🔗 Linkdin | www.linkedin.com/in/priyanshu-priyadarshi-075673309
+
+
 
 This extension was created as a personal project to experiment with AI integration in developer workflows.
