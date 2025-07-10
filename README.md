@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 0xLeet Chrome Extension with Backend Server
 
 This project consists of a Chrome extension that communicates with a Node.js backend server to provide AI-powered chat functionality using Google's Gemini API.
@@ -116,3 +117,6 @@ Check if the server is running.
 - No need to enter API keys in the extension popup anymore
 - The backend handles all API calls securely
 - Make sure the backend server is running before using the extension 
+=======
+# 0xLeet
+>>>>>>> cd9e8a7ee07de13bdc31141a03096e53343a2b8b
