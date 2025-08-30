@@ -14,24 +14,6 @@ It helps users by providing problem hints, explanations, and code suggestions wi
 
 ---
 
-
-
----
-
-## ⚙️ <span style="color:#8A2BE2;">Installation & Setup</span>
-```bash
-# 1. Clone the repo
-git clone https://github.com/Priyanshupriyadarshi29/0xLeet.git
-
-# 2. Open Chrome extensions page
-chrome://extensions/
-
-# 3. Enable Developer Mode
-
-# 4. Load unpacked and select the project folder
-
-# 5. The extension is ready to use 🚀
-
 ## 🛠️ Tech Stack
 ```bash
 Frontend:  HTML, CSS, JavaScript
@@ -50,3 +32,21 @@ AI:        Google Gemini API
 │── server/              # Backend (Node.js + Express + Gemini API)
 │── package.json         # Dependencies & scripts
 │── README.md            # Project documentation
+
+---
+
+## ⚙️ <span style="color:#8A2BE2;">Installation & Setup</span>
+```bash
+# 1. Clone the repo
+git clone https://github.com/Priyanshupriyadarshi29/0xLeet.git
+
+# 2. Open Chrome extensions page
+chrome://extensions/
+
+# 3. Enable Developer Mode
+
+# 4. Load unpacked and select the project folder
+
+# 5. The extension is ready to use 🚀
+
+
