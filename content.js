@@ -26,7 +26,7 @@
     bubble.id = 'chrome-ext-chatbot-bubble';
     bubble.style.width = '60px';
     bubble.style.height = '60px';
-    bubble.style.background = 'linear-gradient(135deg, #4f8cff, #2355d6)';
+    bubble.style.background = 'linear-gradient(135deg, #14532d, #0e2917)';
     bubble.style.borderRadius = '50%';
     bubble.style.display = 'flex';
     bubble.style.alignItems = 'center';
@@ -42,14 +42,15 @@
     chatWindow.id = 'chrome-ext-chatbot-window';
     chatWindow.style.width = '340px';
     chatWindow.style.height = '420px';
-    chatWindow.style.background = 'rgba(44, 33, 16, 0.15)';
-    chatWindow.style.borderRadius = '5px';
+    chatWindow.style.background = 'rgba(18, 18, 18, 0.9)';
+    chatWindow.style.borderRadius = '16px';
     chatWindow.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)'; 
     chatWindow.style.display = 'none';
     chatWindow.style.flexDirection = 'column';
     chatWindow.style.overflow = 'hidden';
     chatWindow.style.backdropFilter = 'blur(8px)'; 
-    chatWindow.style.position = 'relative'; 
+    chatWindow.style.position = 'relative';
+    chatWindow.style.border = '1px solid #14532d';
 // const header=document.createElement('div');
 
 // header.style.width = '340px';
@@ -75,7 +76,7 @@
     closeBtn.style.borderRadius = '50%';
     closeBtn.style.width = '24px';
     closeBtn.style.height = '24px';
-    closeBtn.style.color = '#fff';
+    closeBtn.style.color = '#14532d';
     closeBtn.style.fontSize = '18px';
     closeBtn.style.cursor = 'pointer';
     closeBtn.style.display = 'flex';
@@ -96,32 +97,44 @@
     messages.style.paddingTop = '40px'; 
     messages.style.overflowY = 'auto';
     messages.style.background = 'transparent';
+    // Hide scrollbar (cross-browser)
+    messages.style.scrollbarWidth = 'none'; // Firefox
+    messages.style.msOverflowStyle = 'none'; // IE 10+
+    messages.style.setProperty('scrollbar-width', 'none');
+    // For Webkit browsers
+    messages.style.setProperty('overflow', '-webkit-paged-x');
+    // Add a style tag for ::-webkit-scrollbar
+    const style = document.createElement('style');
+    style.innerHTML = `#chrome-ext-chatbot-messages::-webkit-scrollbar { display: none; width: 0; background: transparent; }`;
+    document.head.appendChild(style);
     
-    const firstmessage = `Do you need help in ${thisproblem}? if yes the type 'yes'`;
-    messages.innerHTML = `<div style="color:#888;text-align:center;margin-top:40px;">${firstmessage}</div>`;
+    const firstmessage = `Do you need help in ${thisproblem}? if yes then type 'yes'`;
+    messages.innerHTML = `<div style="color:#aaa;text-align:center;margin-top:40px;">${firstmessage}</div>`;
     
     // Input area
     const inputArea = document.createElement('div');
     inputArea.style.display = 'flex';
     inputArea.style.padding = '12px 16px';
-    inputArea.style.background = 'rgba(240, 242, 245, 0.3)'; 
-    inputArea.style.borderTop = 'none';
+    inputArea.style.background = '#1f1f1f'; 
+    inputArea.style.borderTop = '1px solid #14532d';
 
     const input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Type your message...';
     input.style.flex = '1';
     input.style.padding = '10px';
-    input.style.border = '1px solid #d1d5db';
+    input.style.border = '1px solid #14532d';
     input.style.borderRadius = '12px';
     input.style.fontSize = '15px';
     input.style.outline = 'none';
+    input.style.background = '#121212';
+    input.style.color = '#e0e0e0';
 
     const sendBtn = document.createElement('button');
     sendBtn.textContent = 'Send';
     sendBtn.style.marginLeft = '8px';
-    sendBtn.style.background = '#2C2110';
-    sendBtn.style.color = '#FF9F16';
+    sendBtn.style.background = '#14532d';
+    sendBtn.style.color = '#e0e0e0';
     sendBtn.style.border = 'none';
     sendBtn.style.borderRadius = '8px';
     sendBtn.style.padding = '0 18px';
@@ -148,22 +161,53 @@
    
 
 
+    // Simple Markdown to HTML converter for bot messages
+    function markdownToHtml(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // bold
+        .replace(/\*(.*?)\*/g, '<i>$1</i>') // italics
+        .replace(/`([^`]+)`/g, '<code>$1</code>') // inline code
+        .replace(/\n/g, '<br>'); // line breaks
+    }
+
     function appendMessage(sender, text) {
       const msgDiv = document.createElement('div');
       msgDiv.style.margin = '8px 0';
       msgDiv.style.display = 'flex';
       msgDiv.style.flexDirection = sender === 'user' ? 'row-reverse' : 'row';
-      msgDiv.innerHTML = `<div style="max-width: 70%; padding: 10px 14px; border-radius: 16px; background: ${sender === 'user' ? '#2C2110' : '#e3e7ed'}; color: ${sender === 'user' ? '#FF9F16' : '#2C2110'}; font-size: 15px;">${text}</div>`;
+      if (sender === 'bot') {
+        msgDiv.innerHTML = `<div style="max-width: 70%; padding: 12px 16px; border-radius: 16px; background: #1f1f1f; color: #e0e0e0; font-size: 15px; text-align: left; word-break: break-word; white-space: pre-line; box-shadow: 0 2px 8px rgba(20,83,45,0.08);">
+          ${markdownToHtml(text)}
+        </div>`;
+      } else {
+        msgDiv.innerHTML = `<div style="max-width: 70%; padding: 10px 14px; border-radius: 16px; background: #14532d; color: #e0e0e0; font-size: 15px;">${text}</div>`;
+      }
       messages.appendChild(msgDiv);
       messages.scrollTop = messages.scrollHeight;
     }
+
+    // Add code block styling
+    const style2 = document.createElement('style');
+    style2.innerHTML = `
+      #chrome-ext-chatbot-messages code {
+        background: #222;
+        color: #7fff7f;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: 'Fira Mono', 'Consolas', monospace;
+        font-size: 14px;
+      }
+      #chrome-ext-chatbot-messages b { color: #7fff7f; }
+      #chrome-ext-chatbot-messages i { color: #baffc9; }
+    `;
+    document.head.appendChild(style2);
 
     async function sendMessage() {
       const userMsg = input.value.trim();
       if (!userMsg) return;
       
       // Remove placeholder if first message
-      const firstmessage = `Do you need help in ${thisproblem}? if yes the type 'yes'`;
+      const firstmessage = `Do you need help in ${thisproblem}? if yes then type 'yes'`;
       const isFirstMessage = messages.innerText.includes(firstmessage);
       
       if (isFirstMessage) messages.innerHTML = '';
@@ -175,12 +219,12 @@
         const typingDiv = document.createElement('div');
         typingDiv.id = 'bot-typing';
         typingDiv.style.margin = '8px 0';
-        typingDiv.style.color = '#888';
+        typingDiv.style.color = '#aaa';
         typingDiv.textContent = 'Bot is typing...';
         messages.appendChild(typingDiv);
         messages.scrollTop = messages.scrollHeight;
 
-        const helpMessage = `I need help in ${thisproblem} from LeetCode. Can you provide me with guidance, hints, or a solution approach?`;
+        const helpMessage = `I need help with the LeetCode problem "${thisproblem}". Can you provide me with guidance, hints, or a solution approach for this problem?`;
 
         try {
           const response = await fetch('http://localhost:3001/api/chat', {
@@ -212,7 +256,7 @@
       const typingDiv = document.createElement('div');
       typingDiv.id = 'bot-typing';
       typingDiv.style.margin = '8px 0';
-      typingDiv.style.color = '#888';
+      typingDiv.style.color = '#aaa';
       typingDiv.textContent = 'Bot is typing...';
       messages.appendChild(typingDiv);
       messages.scrollTop = messages.scrollHeight;

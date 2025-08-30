@@ -6,7 +6,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Check if API key is available
 if (!process.env.GEMINI_API_KEY) {
   console.error('GEMINI_API_KEY is not set in environment variables');
   process.exit(1);
@@ -16,7 +15,7 @@ if (!process.env.GEMINI_API_KEY) {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
@@ -56,7 +55,7 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-// Health check endpoint
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });

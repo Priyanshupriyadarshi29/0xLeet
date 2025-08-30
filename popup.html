@@ -2,10 +2,54 @@
 <html>
 <head>
   <title>0xLeet</title>
- 
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      width: 220px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: #00ff41;
+    }
+    .status-container {
+      display: flex;
+      align-items: center;
+      background: #1f1f1f;
+      padding: 6px 12px;
+      border-radius: 16px;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #00ff41;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .status-text {
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <h3>0xLeet AI Assistant</h3>
-  
+  <div class="container">
+    <div class="title">0xLeet AI Assistant</div>
+    <div class="status-container">
+      <div class="status-dot"></div>
+      <span class="status-text">Assistant is active</span>
+    </div>
+  </div>
 </body>
 </html> 
