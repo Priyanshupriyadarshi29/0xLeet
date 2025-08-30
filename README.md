@@ -40,3 +40,22 @@ chrome://extensions/
 # 4. Load unpacked and select the project folder
 
 # 5. The extension is ready to use 🚀
+
+## 🛠️ Tech Stack
+```bash
+Frontend:  HTML, CSS, JavaScript
+Backend:   Node.js, Express.js
+AI:        Google Gemini API
+
+0xLeet/
+│── manifest.json        # Chrome Extension config
+│── background.js        # Background service worker
+│── content.js           # Injected script for LeetCode page
+│── popup.html           # Popup UI
+│── popup.js             # Logic for popup UI
+│── styles.css           # Styles for assistant UI
+│── assets/              # Icons, images
+│── server/              # Backend (Node.js + Express + Gemini API)
+│── package.json         # Dependencies & scripts
+│── README.md            # Project documentation
+
