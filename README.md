@@ -14,16 +14,7 @@ It helps users by providing problem hints, explanations, and code suggestions wi
 
 ---
 
-## 📸 <span style="color:#FF1493;">Screenshots</span>
 
-### Assistant Active
-![Assistant Active](./screenshots/Screenshot1.png)
-
-### Problem with Assistant Sidebar
-![Problem with Assistant Sidebar](./screenshots/Screenshot2.png)
-
-### Chatbox for Help
-![Chatbox for Help](./screenshots/Screenshot3.png)
 
 ---
 
@@ -47,6 +38,7 @@ Frontend:  HTML, CSS, JavaScript
 Backend:   Node.js, Express.js
 AI:        Google Gemini API
 
+📂 Project Structure
 0xLeet/
 │── manifest.json        # Chrome Extension config
 │── background.js        # Background service worker
@@ -58,4 +50,3 @@ AI:        Google Gemini API
 │── server/              # Backend (Node.js + Express + Gemini API)
 │── package.json         # Dependencies & scripts
 │── README.md            # Project documentation
-
